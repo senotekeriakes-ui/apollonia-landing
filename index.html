@@ -247,6 +247,20 @@ section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
 footer {
   text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
 }
+.privacy-overlay { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(12,18,37,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); justify-content: center; align-items: center; padding: 2rem; }
+.privacy-overlay.visible { display: flex; }
+.privacy-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 720px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 2.5rem; position: relative; }
+.privacy-modal h2 { font-family: var(--heading); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+.privacy-modal h3 { font-family: var(--heading); font-size: 1.05rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.4rem; color: var(--text); }
+.privacy-modal p, .privacy-modal li { font-size: 0.85rem; color: var(--text-dim); font-weight: 300; line-height: 1.7; }
+.privacy-modal ul { list-style: none; padding: 0; margin-top: 0.5rem; }
+.privacy-modal ul li { padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem; }
+.privacy-modal ul li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.privacy-modal a { color: var(--accent); text-decoration: none; }
+.privacy-modal a:hover { text-decoration: underline; }
+.privacy-meta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 1.5rem; }
+.privacy-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; color: var(--text-dim); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+.privacy-close:hover { color: var(--text); }
 .footer-brand { margin-bottom: 1.5rem; }
 .footer-brand img { height: 18px; width: auto; opacity: 0.5; }
 .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
@@ -416,7 +430,7 @@ footer {
       </div>
       <div class="form-consent">
         <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
+        <label for="consent">I agree to the <a href="#" onclick="openPrivacy(event)">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
       </div>
       <div class="form-submit-row">
         <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
@@ -435,7 +449,7 @@ footer {
   <div class="footer-links">
     <a href="#product">Product</a>
     <a href="#beta">Beta Programme</a>
-    <a href="privacy.html" target="_blank">Privacy Policy</a>
+    <a href="#" onclick="openPrivacy(event)">Privacy Policy</a>
   </div>
   <p class="footer-copy">&copy; 2026 Apollonia Medical Technology. All rights reserved.</p>
 </footer>
@@ -478,6 +492,64 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyOverlay').classList.add('visible'); document.body.style.overflow = 'hidden'; }
+function closePrivacy() { document.getElementById('privacyOverlay').classList.remove('visible'); document.body.style.overflow = ''; }
+document.getElementById('privacyOverlay').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
 </script>
+
+<div class="privacy-overlay" id="privacyOverlay">
+  <div class="privacy-modal">
+    <button class="privacy-close" onclick="closePrivacy()">&times;</button>
+    <h2>Privacy Policy</h2>
+    <div class="privacy-meta">Last updated: March 2026</div>
+
+    <h3>Who We Are</h3>
+    <p>Apollonia Medical Technology ("Apollonia", "we", "us", "our") is an Australian company developing clinical camera and software products for dental professionals. This policy explains how we collect, use, and protect your personal information when you interact with this website and apply for our beta programme.</p>
+
+    <h3>Information We Collect</h3>
+    <p>When you submit a beta application, we collect:</p>
+    <ul>
+      <li>Name, email address, and phone number (if provided)</li>
+      <li>City of practice, professional role, and specialty (if applicable)</li>
+      <li>Information about your current loupes (if provided)</li>
+      <li>Free-text responses you choose to provide</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">We also automatically collect basic analytics data such as page views, referral source, and device type through standard web technologies. We do not use third-party advertising trackers.</p>
+
+    <h3>How We Use Your Information</h3>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Process and evaluate your beta application</li>
+      <li>Contact you regarding beta programme participation and scheduling</li>
+      <li>Send you product updates related to Apollonia (you may unsubscribe at any time)</li>
+      <li>Improve our products and services based on aggregated, anonymised feedback</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">We will never sell your personal information to third parties.</p>
+
+    <h3>Data Storage &amp; Security</h3>
+    <p>Your data is stored securely using industry-standard encryption. We use trusted third-party service providers for form handling and email communications, each bound by their own privacy obligations. Data is stored in Australia or in jurisdictions with comparable data protection standards.</p>
+
+    <h3>Your Rights</h3>
+    <p>Under Australian Privacy Principles (APPs), you have the right to:</p>
+    <ul>
+      <li>Access the personal information we hold about you</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of your data</li>
+      <li>Withdraw consent for marketing communications at any time</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">To exercise any of these rights, contact us at the email address below.</p>
+
+    <h3>Cookies &amp; Tracking</h3>
+    <p>This website uses essential cookies for functionality and basic analytics cookies to understand how visitors use the site. No third-party advertising or remarketing cookies are used. You can disable cookies in your browser settings at any time.</p>
+
+    <h3>Changes to This Policy</h3>
+    <p>We may update this policy from time to time. Any changes will be posted on this page with an updated effective date. Continued use of this website after changes constitutes acceptance of the revised policy.</p>
+
+    <h3>Contact</h3>
+    <p>For questions about this privacy policy or your personal data, contact Apollonia Medical Technology at <a href="mailto:hello@apollonia.com.au">hello@apollonia.com.au</a>.</p>
+  </div>
+</div>
+
 </body>
 </html>
