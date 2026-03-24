@@ -152,35 +152,85 @@ section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
 .spec-card h4 { font-family: var(--heading); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
 .spec-card p { font-size: 0.78rem; color: var(--text-dim); font-weight: 300; line-height: 1.55; }
 
-.vision-timeline { position: relative; padding: 2rem 0; }
-.vision-timeline::before {
-  content: ''; position: absolute; left: 32px; top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--border-active) 10%, var(--border-active) 90%, transparent);
+/* Tree of Apollonia */
+.tree-container { position: relative; display: flex; flex-direction: column; align-items: center; padding: 3rem 0 2rem; }
+
+/* Trunk line */
+.tree-trunk { width: 2px; background: linear-gradient(to top, var(--accent), var(--accent) 60%, rgba(226,207,122,0.3)); position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%); }
+
+/* Node rows */
+.tree-tier { display: flex; justify-content: center; gap: 1.5rem; width: 100%; max-width: 900px; position: relative; z-index: 1; margin-bottom: 2rem; }
+.tree-tier:last-child { margin-bottom: 0; }
+
+/* Branch lines connecting to trunk */
+.tree-node { position: relative; flex: 1; max-width: 280px; }
+.tree-node::before {
+  content: ''; position: absolute; top: 20px; height: 2px;
+  background: var(--accent); opacity: 0.3;
 }
-.vision-phase { position: relative; padding-left: 88px; margin-bottom: 3.5rem; }
-.vision-phase:last-child { margin-bottom: 0; }
-.vision-dot {
-  position: absolute; left: 21px; top: 8px; width: 23px; height: 23px;
-  border-radius: 50%; border: 2px solid; background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
+.tree-tier-planned .tree-node::before { background: var(--accent); opacity: 0.15; }
+.tree-tier-shipped .tree-node:first-child::before,
+.tree-tier-progress .tree-node:first-child::before,
+.tree-tier-planned .tree-node:first-child::before { right: -0.75rem; width: 0.75rem; left: auto; }
+.tree-tier-shipped .tree-node:last-child::before,
+.tree-tier-progress .tree-node:last-child::before,
+.tree-tier-planned .tree-node:last-child::before { left: -0.75rem; width: 0.75rem; right: auto; }
+.tree-tier-shipped .tree-node:only-child::before,
+.tree-tier-progress .tree-node:only-child::before,
+.tree-tier-planned .tree-node:only-child::before { display: none; }
+
+/* Cards */
+.tree-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.5rem; text-align: center; transition: border-color 0.3s ease;
 }
-.vision-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; }
-.vision-phase:nth-child(1) .vision-dot { border-color: var(--gold); }
-.vision-phase:nth-child(1) .vision-dot::after { background: var(--gold); }
-.vision-phase:nth-child(2) .vision-dot { border-color: #6ba8d6; }
-.vision-phase:nth-child(2) .vision-dot::after { background: #6ba8d6; }
-.vision-phase:nth-child(3) .vision-dot { border-color: var(--blue); }
-.vision-phase:nth-child(3) .vision-dot::after { background: var(--blue); }
-.vision-tag {
-  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
-  text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 100px;
-  font-weight: 600; display: inline-block; margin-bottom: 0.5rem;
+.tree-card:hover { border-color: var(--border-active); }
+
+/* Status dot on card */
+.tree-status {
+  width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+  margin-bottom: 0.75rem;
 }
-.vision-phase:nth-child(1) .vision-tag { color: var(--gold); background: rgba(226,207,122,0.1); border: 1px solid rgba(226,207,122,0.2); }
-.vision-phase:nth-child(2) .vision-tag { color: #6ba8d6; background: rgba(107,168,214,0.1); border: 1px solid rgba(107,168,214,0.2); }
-.vision-phase:nth-child(3) .vision-tag { color: var(--blue); background: rgba(51,114,188,0.1); border: 1px solid rgba(51,114,188,0.2); }
-.vision-phase h3 { font-family: var(--heading); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 600; margin-bottom: 0.5rem; }
-.vision-phase p { font-size: 0.9rem; color: var(--text-dim); font-weight: 300; line-height: 1.65; max-width: 520px; }
+.tree-status-shipped { background: var(--accent); box-shadow: 0 0 8px rgba(226,207,122,0.4); }
+.tree-status-progress { background: #6ba8d6; box-shadow: 0 0 8px rgba(107,168,214,0.4); }
+.tree-status-planned { background: var(--text-muted); }
+
+/* Card content */
+.tree-card h4 { font-family: var(--heading); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+.tree-card p { font-size: 0.8rem; color: var(--text-dim); font-weight: 300; line-height: 1.6; }
+
+/* Tag */
+.tree-tag {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px;
+  font-weight: 600; display: inline-block; margin-bottom: 0.6rem;
+}
+.tree-tag-shipped { color: var(--accent); background: rgba(226,207,122,0.1); border: 1px solid rgba(226,207,122,0.2); }
+.tree-tag-progress { color: #6ba8d6; background: rgba(107,168,214,0.1); border: 1px solid rgba(107,168,214,0.2); }
+.tree-tag-planned { color: var(--text-muted); background: rgba(74,82,120,0.15); border: 1px solid rgba(74,82,120,0.25); }
+
+/* Tier labels */
+.tree-tier-label {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); text-align: center; margin-bottom: 1rem; position: relative; z-index: 1;
+}
+
+/* Roots (bottom of trunk) */
+.tree-roots { width: 40px; height: 20px; border-bottom: 2px solid var(--accent); border-left: 2px solid var(--accent); border-right: 2px solid var(--accent); border-radius: 0 0 20px 20px; opacity: 0.4; margin: 0 auto; position: relative; z-index: 1; }
+
+/* Canopy glow at top */
+.tree-canopy {
+  width: 120px; height: 60px; border-radius: 60px 60px 0 0;
+  background: radial-gradient(ellipse at bottom, rgba(226,207,122,0.08), transparent);
+  margin: 0 auto 1rem; position: relative; z-index: 1;
+}
+
+/* Legend */
+.tree-legend {
+  display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem;
+  position: relative; z-index: 1;
+}
+.tree-legend-item { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-dim); }
 
 .beta-section { position: relative; padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
 .beta-container {
@@ -284,7 +334,11 @@ footer {
   .beta-container { padding: 2.5rem 1.5rem; }
   .beta-form { grid-template-columns: 1fr; }
   .hero-cta-group { flex-direction: column; }
-  .vision-phase { padding-left: 68px; }
+  .tree-tier { flex-direction: column; align-items: center; }
+  .tree-node { max-width: 100%; }
+  .tree-node::before { display: none; }
+  .tree-trunk { display: none; }
+  .tree-legend { flex-direction: column; align-items: center; gap: 0.75rem; }
   .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
   nav { padding: 1rem 1.25rem; }
 }
@@ -344,14 +398,40 @@ footer {
 
 <section>
   <div class="reveal">
-    <div class="section-label">03 · Where We're Headed</div>
-    <div class="section-title">This is just the beginning</div>
-    <div class="section-desc">The camera is our starting point. We're building toward a future where clinical capture, intelligent documentation, and visual workflows come together seamlessly.</div>
+    <div class="section-label">03 · Tree of Apollonia</div>
+    <div class="section-title">Rooted in what's real, growing toward what's next</div>
+    <div class="section-desc">The trunk is what we've built. The branches are what's coming.</div>
   </div>
-  <div class="vision-timeline">
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Now</div><h3>Apollonia Camera</h3><p>The foundation. A purpose-built clinical camera that introduces first-person video documentation to dental workflows. Light, intuitive, and designed to disappear into your routine.</p></div>
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Next</div><h3>Intelligent Software</h3><p>A cloud platform that turns your recordings into structured, searchable clinical content. AI-powered documentation that writes itself, so you can focus on your patients.</p></div>
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">The Vision</div><h3>Augmented Clinical Experience</h3><p>Where everything comes together. Smart wearables that merge magnification, capture, and real-time intelligence into a single, seamless tool for the modern clinician.</p></div>
+
+  <div class="tree-container">
+    <div class="tree-trunk"></div>
+
+    <div class="tree-canopy"></div>
+
+    <div class="tree-tier-label reveal">Planned</div>
+    <div class="tree-tier tree-tier-planned">
+      <div class="tree-node reveal"><div class="tree-card"><div class="tree-status tree-status-planned"></div><div class="tree-tag tree-tag-planned">Planned</div><h4>Augmented Wearable</h4><p>Smart loupes that merge magnification, capture, and real-time intelligence into one seamless tool.</p></div></div>
+      <div class="tree-node reveal"><div class="tree-card"><div class="tree-status tree-status-planned"></div><div class="tree-tag tree-tag-planned">Planned</div><h4>AI Clinical Notes</h4><p>Automated documentation generated from your recordings, so your notes write themselves.</p></div></div>
+    </div>
+
+    <div class="tree-tier-label reveal">In Progress</div>
+    <div class="tree-tier tree-tier-progress">
+      <div class="tree-node reveal"><div class="tree-card"><div class="tree-status tree-status-progress"></div><div class="tree-tag tree-tag-progress">In Progress</div><h4>Cloud Platform</h4><p>Upload, organise, and search your clinical recordings. Structured video storage built for dental workflows.</p></div></div>
+      <div class="tree-node reveal"><div class="tree-card"><div class="tree-status tree-status-progress"></div><div class="tree-tag tree-tag-progress">In Progress</div><h4>Case Sharing</h4><p>Share recordings securely with colleagues for peer review, mentoring, and collaborative case planning.</p></div></div>
+    </div>
+
+    <div class="tree-tier-label reveal">Shipped</div>
+    <div class="tree-tier tree-tier-shipped">
+      <div class="tree-node reveal"><div class="tree-card"><div class="tree-status tree-status-shipped"></div><div class="tree-tag tree-tag-shipped">Shipped</div><h4>Apollonia Camera</h4><p>4K loupe-mounted clinical camera with hands-free control, integrated lighting, and live chairside display.</p></div></div>
+    </div>
+
+    <div class="tree-roots"></div>
+
+    <div class="tree-legend">
+      <div class="tree-legend-item"><div class="tree-status tree-status-shipped"></div> Shipped</div>
+      <div class="tree-legend-item"><div class="tree-status tree-status-progress"></div> In Progress</div>
+      <div class="tree-legend-item"><div class="tree-status tree-status-planned"></div> Planned</div>
+    </div>
   </div>
 </section>
 
