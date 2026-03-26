@@ -133,8 +133,7 @@ section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
   padding: 2rem; transition: border-color 0.3s ease;
 }
 .problem-card:hover { border-color: var(--border-active); }
-.problem-card .icon { margin-bottom: 1rem; }
-.problem-card .icon svg { width: 32px; height: 32px; stroke: var(--accent); stroke-width: 1.5; fill: none; opacity: 0.7; }
+.problem-card .icon { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); opacity: 0.6; }
 .problem-card h3 { font-family: var(--heading); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; }
 .problem-card p { font-size: 0.88rem; color: var(--text-dim); font-weight: 300; line-height: 1.65; }
 
@@ -147,98 +146,39 @@ section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
   padding: 1.5rem; text-align: center; transition: all 0.3s ease;
 }
 .spec-card:hover { border-color: var(--border-active); background: var(--surface-2); transform: translateY(-2px); }
-.spec-icon { margin-bottom: 0.75rem; }
-.spec-icon svg { width: 28px; height: 28px; stroke: var(--accent); stroke-width: 1.5; fill: none; opacity: 0.7; display: inline-block; }
+.spec-icon { font-size: 1.3rem; color: var(--accent); opacity: 0.7; margin-bottom: 0.75rem; }
 .spec-card h4 { font-family: var(--heading); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
 .spec-card p { font-size: 0.78rem; color: var(--text-dim); font-weight: 300; line-height: 1.55; }
 
-/* Tree of Apollonia */
-.tree-container { position: relative; padding: 3rem 0 2rem; overflow-x: auto; }
-
-/* Horizontal trunk */
-.tree-trunk {
-  height: 2px; position: absolute; top: 50%; left: 0; right: 0;
-  background: linear-gradient(to right, var(--accent), var(--accent) 40%, rgba(226,207,122,0.3));
-  transform: translateY(-50%); z-index: 0;
+.vision-timeline { position: relative; padding: 2rem 0; }
+.vision-timeline::before {
+  content: ''; position: absolute; left: 32px; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border-active) 10%, var(--border-active) 90%, transparent);
 }
-
-/* Horizontal layout */
-.tree-row { display: flex; align-items: flex-start; gap: 0; position: relative; z-index: 1; min-width: min-content; }
-
-/* Each column (shipped / progress / planned) */
-.tree-col {
-  display: flex; flex-direction: column; align-items: center; position: relative;
+.vision-phase { position: relative; padding-left: 88px; margin-bottom: 3.5rem; }
+.vision-phase:last-child { margin-bottom: 0; }
+.vision-dot {
+  position: absolute; left: 21px; top: 8px; width: 23px; height: 23px;
+  border-radius: 50%; border: 2px solid; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
 }
-.tree-col-shipped { flex: 0 0 auto; padding-right: 1.5rem; }
-.tree-col-progress { flex: 0 0 auto; padding: 0 1.5rem; }
-.tree-col-planned { flex: 0 0 auto; padding-left: 1.5rem; }
-
-/* Column label */
-.tree-col-label {
-  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 1.25rem; white-space: nowrap;
-}
-
-/* Branch connectors (vertical lines from trunk to cards) */
-.tree-node { position: relative; margin-bottom: 1rem; }
-.tree-node:last-child { margin-bottom: 0; }
-.tree-node::before {
-  content: ''; position: absolute; left: 50%; width: 2px; top: -1.25rem; height: 1.25rem;
-  background: var(--accent); opacity: 0.3; transform: translateX(-50%);
-}
-.tree-col-shipped .tree-node::before { opacity: 0.6; }
-.tree-col-planned .tree-node::before { opacity: 0.15; }
-
-/* Cards */
-.tree-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-  padding: 1.25rem; text-align: center; transition: border-color 0.3s ease;
-  width: 220px;
-}
-.tree-card:hover { border-color: var(--border-active); }
-
-/* Status dot */
-.tree-status {
-  width: 8px; height: 8px; border-radius: 50%; display: inline-block;
-  margin-bottom: 0.6rem;
-}
-.tree-status-shipped { background: var(--accent); box-shadow: 0 0 8px rgba(226,207,122,0.4); }
-.tree-status-progress { background: #6ba8d6; box-shadow: 0 0 8px rgba(107,168,214,0.4); }
-.tree-status-planned { background: var(--text-muted); }
-
-/* Card content */
-.tree-card h4 { font-family: var(--heading); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
-.tree-card p { font-size: 0.78rem; color: var(--text-dim); font-weight: 300; line-height: 1.55; }
-
-/* Tag */
-.tree-tag {
-  font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.2em;
-  text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 100px;
+.vision-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; }
+.vision-phase:nth-child(1) .vision-dot { border-color: var(--gold); }
+.vision-phase:nth-child(1) .vision-dot::after { background: var(--gold); }
+.vision-phase:nth-child(2) .vision-dot { border-color: #6ba8d6; }
+.vision-phase:nth-child(2) .vision-dot::after { background: #6ba8d6; }
+.vision-phase:nth-child(3) .vision-dot { border-color: var(--blue); }
+.vision-phase:nth-child(3) .vision-dot::after { background: var(--blue); }
+.vision-tag {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 100px;
   font-weight: 600; display: inline-block; margin-bottom: 0.5rem;
 }
-.tree-tag-shipped { color: var(--accent); background: rgba(226,207,122,0.1); border: 1px solid rgba(226,207,122,0.2); }
-.tree-tag-progress { color: #6ba8d6; background: rgba(107,168,214,0.1); border: 1px solid rgba(107,168,214,0.2); }
-.tree-tag-planned { color: var(--text-muted); background: rgba(74,82,120,0.15); border: 1px solid rgba(74,82,120,0.25); }
-
-/* Roots (left) */
-.tree-roots {
-  width: 20px; height: 40px; border-left: 2px solid var(--accent); border-top: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
-  border-radius: 20px 0 0 20px; opacity: 0.4; position: absolute; left: -20px; top: 50%; transform: translateY(-50%); z-index: 1;
-}
-
-/* Canopy glow (right) */
-.tree-canopy {
-  width: 60px; height: 120px; border-radius: 0 60px 60px 0;
-  background: radial-gradient(ellipse at left, rgba(226,207,122,0.06), transparent);
-  position: absolute; right: -20px; top: 50%; transform: translateY(-50%); z-index: 1;
-}
-
-/* Legend */
-.tree-legend {
-  display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem;
-  position: relative; z-index: 1;
-}
-.tree-legend-item { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-dim); }
+.vision-phase:nth-child(1) .vision-tag { color: var(--gold); background: rgba(226,207,122,0.1); border: 1px solid rgba(226,207,122,0.2); }
+.vision-phase:nth-child(2) .vision-tag { color: #6ba8d6; background: rgba(107,168,214,0.1); border: 1px solid rgba(107,168,214,0.2); }
+.vision-phase:nth-child(3) .vision-tag { color: var(--blue); background: rgba(51,114,188,0.1); border: 1px solid rgba(51,114,188,0.2); }
+.vision-phase h3 { font-family: var(--heading); font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 600; margin-bottom: 0.5rem; }
+.vision-phase p { font-size: 0.9rem; color: var(--text-dim); font-weight: 300; line-height: 1.65; max-width: 520px; }
 
 .beta-section { position: relative; padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
 .beta-container {
@@ -307,20 +247,6 @@ section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
 footer {
   text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border);
 }
-.privacy-overlay { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(12,18,37,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); justify-content: center; align-items: center; padding: 2rem; }
-.privacy-overlay.visible { display: flex; }
-.privacy-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 720px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 2.5rem; position: relative; }
-.privacy-modal h2 { font-family: var(--heading); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
-.privacy-modal h3 { font-family: var(--heading); font-size: 1.05rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.4rem; color: var(--text); }
-.privacy-modal p, .privacy-modal li { font-size: 0.85rem; color: var(--text-dim); font-weight: 300; line-height: 1.7; }
-.privacy-modal ul { list-style: none; padding: 0; margin-top: 0.5rem; }
-.privacy-modal ul li { padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem; }
-.privacy-modal ul li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-.privacy-modal a { color: var(--accent); text-decoration: none; }
-.privacy-modal a:hover { text-decoration: underline; }
-.privacy-meta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 1.5rem; }
-.privacy-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; color: var(--text-dim); font-size: 1.5rem; cursor: pointer; line-height: 1; }
-.privacy-close:hover { color: var(--text); }
 .footer-brand { margin-bottom: 1.5rem; }
 .footer-brand img { height: 18px; width: auto; opacity: 0.5; }
 .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
@@ -342,13 +268,7 @@ footer {
   .beta-container { padding: 2.5rem 1.5rem; }
   .beta-form { grid-template-columns: 1fr; }
   .hero-cta-group { flex-direction: column; }
-  .tree-row { flex-direction: column; align-items: center; gap: 2rem; }
-  .tree-col { padding: 0 !important; }
-  .tree-card { width: 100%; max-width: 300px; }
-  .tree-trunk { display: none; }
-  .tree-roots { display: none; }
-  .tree-canopy { display: none; }
-  .tree-legend { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .vision-phase { padding-left: 68px; }
   .footer-links { flex-direction: column; align-items: center; gap: 1rem; }
   nav { padding: 1rem 1.25rem; }
 }
@@ -373,34 +293,23 @@ footer {
   </div>
 </div>
 
-<section>
-  <div class="reveal">
-    <div class="section-label">01 · The Camera</div>
-    <div class="section-title">4K clinical video, zero disruption</div>
-    <div class="section-desc">Clinical documentation in dentistry hasn't kept pace with the rest of medicine. Procedures go unrecorded, tools remain disconnected, and magnification hardware hasn't changed in decades.</div>
-  </div>
-  <div class="problem-grid">
-    <div class="problem-card reveal"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><h3>Record Every Procedure</h3><p>The Apollonia Camera captures 4K footage of your dental treatments from a first-person perspective, building a complete visual record without changing how you work.</p></div>
-    <div class="problem-card reveal"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Fits Your Workflow</h3><p>Designed to integrate seamlessly into your existing routine. No extra steps, no awkward positioning. Just mount it and treat. The camera disappears into your workflow.</p></div>
-    <div class="problem-card reveal"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Purpose-Built for Dentistry</h3><p>Not a repurposed action camera or phone mount. Every detail, from the optics to the form factor to the controls, is engineered specifically for the dental operatory.</p></div>
-    <div class="problem-card reveal"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Review, Learn, Share</h3><p>Use your recordings for case documentation, patient communication, peer review, or training. 4K clarity means you capture the clinical detail that matters.</p></div>
-  </div>
-</section>
-
-<div class="section-divider"><hr></div>
-
 <section id="product">
   <div class="product-hero-text reveal">
-    <div class="section-label">02 · Apollonia Camera</div>
+    <div class="section-label">01 · Apollonia Camera</div>
     <div class="section-title">Clinical capture, purpose-built</div>
-    <div class="section-desc">A lightweight, loupe-mounted camera that records exactly what you see. High-definition video, hands-free control, and zero disruption to your clinical flow.</div>
+    <div class="section-desc">Clinical documentation in dentistry hasn't kept pace with the rest of medicine. Apollonia is a lightweight, loupe-mounted camera that records exactly what you see. High-definition video, hands-free control, and zero disruption to your clinical flow.</div>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card reveal"><div class="icon">◇</div><h3>No Visual Record</h3><p>Dentists perform complex procedures every day with no first-person documentation. Patient records rely on written notes and static imaging alone.</p></div>
+    <div class="problem-card reveal"><div class="icon">◈</div><h3>Disconnected Workflow</h3><p>Loupes, cameras, practice management software, and imaging all live in separate silos. Nothing communicates. The clinician is the integration layer.</p></div>
+    <div class="problem-card reveal"><div class="icon">▣</div><h3>Outdated Hardware</h3><p>Dental loupes are optically unchanged in decades. No digital integration, no smart features, no data capture. Premium prices for last-generation technology.</p></div>
+    <div class="problem-card reveal"><div class="icon">⊙</div><h3>Ready for Intelligence</h3><p>Every other clinical discipline is adopting AI for documentation and workflow support. Dentistry is waiting for the capture layer that makes this possible.</p></div>
   </div>
   <div class="product-specs">
-    <div class="spec-card reveal"><div class="spec-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h4>High-Definition Video</h4><p>Clinical-grade resolution for case review, documentation, and patient education.</p></div>
-    <div class="spec-card reveal"><div class="spec-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><h4>Integrated Lighting</h4><p>Built-in LED ensures consistent illumination in the oral cavity without external light sources.</p></div>
-    <div class="spec-card reveal"><div class="spec-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="5" width="22" height="14" rx="7" ry="7"/><circle cx="16" cy="12" r="3"/></svg></div><h4>Hands-Free Control</h4><p>Foot pedal operation keeps your workflow sterile and uninterrupted. Start, stop, and snapshot. No hands required.</p></div>
-    <div class="spec-card reveal"><div class="spec-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Live Display</h4><p>Real-time feed to a chairside screen for patient communication and team visibility during procedures.</p></div>
-
+    <div class="spec-card reveal"><div class="spec-icon">◎</div><h4>High-Definition Video</h4><p>Clinical-grade resolution for diagnostics, case review, and patient education.</p></div>
+    <div class="spec-card reveal"><div class="spec-icon">☼</div><h4>Integrated Lighting</h4><p>Built-in LED ensures consistent illumination in the oral cavity without external light sources.</p></div>
+    <div class="spec-card reveal"><div class="spec-icon">⊘</div><h4>Hands-Free Control</h4><p>Foot pedal operation keeps your workflow sterile and uninterrupted. Start, stop, and snapshot — no hands required.</p></div>
+    <div class="spec-card reveal"><div class="spec-icon">▣</div><h4>Live Display</h4><p>Real-time feed to a chairside screen for patient communication and team visibility during procedures.</p></div>
   </div>
 </section>
 
@@ -408,40 +317,14 @@ footer {
 
 <section>
   <div class="reveal">
-    <div class="section-label">03 · Tree of Apollonia</div>
-    <div class="section-title">Rooted in what's real, growing toward what's next</div>
-    <div class="section-desc">The trunk is what we've built. The branches are what's coming.</div>
+    <div class="section-label">02 · Where We're Headed</div>
+    <div class="section-title">This is just the beginning</div>
+    <div class="section-desc">The camera is our starting point. We're building toward a future where clinical capture, intelligent documentation, and visual workflows come together seamlessly.</div>
   </div>
-
-  <div class="tree-container">
-    <div class="tree-trunk"></div>
-    <div class="tree-roots"></div>
-    <div class="tree-canopy"></div>
-
-    <div class="tree-row">
-      <div class="tree-col tree-col-shipped reveal">
-        <div class="tree-col-label">Shipped</div>
-        <div class="tree-node"><div class="tree-card"><div class="tree-status tree-status-shipped"></div><div class="tree-tag tree-tag-shipped">Shipped</div><h4>Apollonia Camera</h4><p>4K loupe-mounted clinical camera with hands-free control, integrated lighting, and live chairside display.</p></div></div>
-      </div>
-
-      <div class="tree-col tree-col-progress reveal">
-        <div class="tree-col-label">In Progress</div>
-        <div class="tree-node"><div class="tree-card"><div class="tree-status tree-status-progress"></div><div class="tree-tag tree-tag-progress">In Progress</div><h4>Cloud Platform</h4><p>Upload, organise, and search your clinical recordings. Structured video storage built for dental workflows.</p></div></div>
-        <div class="tree-node"><div class="tree-card"><div class="tree-status tree-status-progress"></div><div class="tree-tag tree-tag-progress">In Progress</div><h4>Case Sharing</h4><p>Share recordings securely with colleagues for peer review, mentoring, and collaborative case planning.</p></div></div>
-      </div>
-
-      <div class="tree-col tree-col-planned reveal">
-        <div class="tree-col-label">Planned</div>
-        <div class="tree-node"><div class="tree-card"><div class="tree-status tree-status-planned"></div><div class="tree-tag tree-tag-planned">Planned</div><h4>Augmented Wearable</h4><p>Smart loupes that merge magnification, capture, and real-time intelligence into one seamless tool.</p></div></div>
-        <div class="tree-node"><div class="tree-card"><div class="tree-status tree-status-planned"></div><div class="tree-tag tree-tag-planned">Planned</div><h4>AI Clinical Notes</h4><p>Automated documentation generated from your recordings, so your notes write themselves.</p></div></div>
-      </div>
-    </div>
-
-    <div class="tree-legend">
-      <div class="tree-legend-item"><div class="tree-status tree-status-shipped"></div> Shipped</div>
-      <div class="tree-legend-item"><div class="tree-status tree-status-progress"></div> In Progress</div>
-      <div class="tree-legend-item"><div class="tree-status tree-status-planned"></div> Planned</div>
-    </div>
+  <div class="vision-timeline">
+    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Now</div><h3>Apollonia Camera</h3><p>The foundation. A purpose-built clinical camera that introduces first-person video documentation to dental workflows — light, intuitive, and designed to disappear into your routine.</p></div>
+    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Next</div><h3>Intelligent Software</h3><p>A cloud platform that turns your recordings into structured, searchable clinical content. AI-powered documentation that writes itself, so you can focus on your patients.</p></div>
+    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">The Vision</div><h3>Augmented Clinical Experience</h3><p>Where everything comes together — smart wearables that merge magnification, capture, and real-time intelligence into a single, seamless tool for the modern clinician.</p></div>
   </div>
 </section>
 
@@ -450,7 +333,7 @@ footer {
 <section class="beta-section" id="beta">
   <div class="beta-container reveal">
     <div class="beta-header" id="betaHeader">
-      <div class="section-label">04 · Beta Programme</div>
+      <div class="section-label">03 · Beta Programme</div>
       <div class="section-title">Be among the first</div>
       <p>We're inviting a small group of clinicians in Melbourne to test and shape Apollonia before public launch. No cost. Your feedback builds the product.</p>
     </div>
@@ -522,7 +405,7 @@ footer {
       </div>
       <div class="form-consent">
         <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">I agree to the <a href="#" onclick="openPrivacy(event)">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
+        <label for="consent">I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
       </div>
       <div class="form-submit-row">
         <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
@@ -541,7 +424,7 @@ footer {
   <div class="footer-links">
     <a href="#product">Product</a>
     <a href="#beta">Beta Programme</a>
-    <a href="#" onclick="openPrivacy(event)">Privacy Policy</a>
+    <a href="privacy.html" target="_blank">Privacy Policy</a>
   </div>
   <p class="footer-copy">&copy; 2026 Apollonia Medical Technology. All rights reserved.</p>
 </footer>
@@ -584,64 +467,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
-function openPrivacy(e) { e.preventDefault(); document.getElementById('privacyOverlay').classList.add('visible'); document.body.style.overflow = 'hidden'; }
-function closePrivacy() { document.getElementById('privacyOverlay').classList.remove('visible'); document.body.style.overflow = ''; }
-document.getElementById('privacyOverlay').addEventListener('click', function(e) { if (e.target === this) closePrivacy(); });
 </script>
-
-<div class="privacy-overlay" id="privacyOverlay">
-  <div class="privacy-modal">
-    <button class="privacy-close" onclick="closePrivacy()">&times;</button>
-    <h2>Privacy Policy</h2>
-    <div class="privacy-meta">Last updated: March 2026</div>
-
-    <h3>Who We Are</h3>
-    <p>Apollonia Medical Technology ("Apollonia", "we", "us", "our") is an Australian company developing clinical camera and software products for dental professionals. This policy explains how we collect, use, and protect your personal information when you interact with this website and apply for our beta programme.</p>
-
-    <h3>Information We Collect</h3>
-    <p>When you submit a beta application, we collect:</p>
-    <ul>
-      <li>Name, email address, and phone number (if provided)</li>
-      <li>City of practice, professional role, and specialty (if applicable)</li>
-      <li>Information about your current loupes (if provided)</li>
-      <li>Free-text responses you choose to provide</li>
-    </ul>
-    <p style="margin-top: 0.5rem;">We also automatically collect basic analytics data such as page views, referral source, and device type through standard web technologies. We do not use third-party advertising trackers.</p>
-
-    <h3>How We Use Your Information</h3>
-    <p>We use your information to:</p>
-    <ul>
-      <li>Process and evaluate your beta application</li>
-      <li>Contact you regarding beta programme participation and scheduling</li>
-      <li>Send you product updates related to Apollonia (you may unsubscribe at any time)</li>
-      <li>Improve our products and services based on aggregated, anonymised feedback</li>
-    </ul>
-    <p style="margin-top: 0.5rem;">We will never sell your personal information to third parties.</p>
-
-    <h3>Data Storage &amp; Security</h3>
-    <p>Your data is stored securely using industry-standard encryption. We use trusted third-party service providers for form handling and email communications, each bound by their own privacy obligations. Data is stored in Australia or in jurisdictions with comparable data protection standards.</p>
-
-    <h3>Your Rights</h3>
-    <p>Under Australian Privacy Principles (APPs), you have the right to:</p>
-    <ul>
-      <li>Access the personal information we hold about you</li>
-      <li>Request correction of inaccurate information</li>
-      <li>Request deletion of your data</li>
-      <li>Withdraw consent for marketing communications at any time</li>
-    </ul>
-    <p style="margin-top: 0.5rem;">To exercise any of these rights, contact us at the email address below.</p>
-
-    <h3>Cookies &amp; Tracking</h3>
-    <p>This website uses essential cookies for functionality and basic analytics cookies to understand how visitors use the site. No third-party advertising or remarketing cookies are used. You can disable cookies in your browser settings at any time.</p>
-
-    <h3>Changes to This Policy</h3>
-    <p>We may update this policy from time to time. Any changes will be posted on this page with an updated effective date. Continued use of this website after changes constitutes acceptance of the revised policy.</p>
-
-    <h3>Contact</h3>
-    <p>For questions about this privacy policy or your personal data, contact Apollonia Medical Technology at <a href="mailto:hello@apollonia.com.au">hello@apollonia.com.au</a>.</p>
-  </div>
-</div>
-
 </body>
 </html>
