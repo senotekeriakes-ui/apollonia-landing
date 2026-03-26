@@ -61,6 +61,12 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 .nav-logo { height: 22px; width: auto; opacity: 0.9; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s ease;
+}
+.nav-link:hover { color: var(--accent); }
 .nav-cta {
   font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--bg); background: var(--accent);
@@ -68,6 +74,31 @@ nav {
   cursor: pointer; text-decoration: none; transition: all 0.3s ease; font-weight: 600;
 }
 .nav-cta:hover { background: var(--cream); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(226,207,122,0.25); }
+
+.privacy-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  justify-content: center; align-items: center; padding: 2rem;
+}
+.privacy-modal-overlay.active { display: flex; }
+.privacy-modal {
+  background: var(--surface); border: 1px solid var(--border-active); border-radius: 16px;
+  max-width: 700px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 3rem;
+  position: relative;
+}
+.privacy-modal-close {
+  position: absolute; top: 1rem; right: 1.25rem; background: none; border: none;
+  color: var(--text-dim); font-size: 1.5rem; cursor: pointer; transition: color 0.2s ease;
+  font-family: var(--sans);
+}
+.privacy-modal-close:hover { color: var(--accent); }
+.privacy-modal h2 { font-family: var(--heading); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; margin-bottom: 0.5rem; }
+.privacy-modal .privacy-meta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 2rem; }
+.privacy-modal h3 { font-family: var(--heading); font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; margin-top: 1.5rem; color: var(--text); }
+.privacy-modal p, .privacy-modal li { font-size: 0.85rem; color: var(--text-dim); font-weight: 300; line-height: 1.7; }
+.privacy-modal ul { list-style: none; padding: 0; margin-top: 0.5rem; }
+.privacy-modal ul li { padding-left: 1.25rem; position: relative; margin-bottom: 0.35rem; }
+.privacy-modal ul li::before { content: '\00B7'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
 .hero {
   min-height: 100vh; display: flex; flex-direction: column;
@@ -278,7 +309,11 @@ footer {
 
 <nav>
   <img class="nav-logo" src="data:image/png;base64,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" alt="Apollonia">
-  <a href="#beta" class="nav-cta">Apply for Beta</a>
+  <div class="nav-links">
+    <a href="tree.html" class="nav-link">Tree of Apollonia</a>
+    <a href="#" class="nav-link">Founder</a>
+    <a href="#beta" class="nav-cta">Apply for Beta</a>
+  </div>
 </nav>
 
 <div class="hero">
@@ -309,25 +344,10 @@ footer {
 
 <div class="section-divider"><hr></div>
 
-<section>
-  <div class="reveal">
-    <div class="section-label">02 · Where We're Headed</div>
-    <div class="section-title">This is just the beginning</div>
-    <div class="section-desc">The camera is our starting point. We're building toward a future where clinical capture, intelligent documentation, and visual workflows come together seamlessly.</div>
-  </div>
-  <div class="vision-timeline">
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Now</div><h3>Apollonia Camera</h3><p>The foundation. A purpose-built clinical camera that introduces first-person video documentation to dental workflows — light, intuitive, and designed to disappear into your routine.</p></div>
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">Next</div><h3>Intelligent Software</h3><p>A cloud platform that turns your recordings into structured, searchable clinical content. AI-powered documentation that writes itself, so you can focus on your patients.</p></div>
-    <div class="vision-phase reveal"><div class="vision-dot"></div><div class="vision-tag">The Vision</div><h3>Augmented Clinical Experience</h3><p>Where everything comes together — smart wearables that merge magnification, capture, and real-time intelligence into a single, seamless tool for the modern clinician.</p></div>
-  </div>
-</section>
-
-<div class="section-divider"><hr></div>
-
 <section class="beta-section" id="beta">
   <div class="beta-container reveal">
     <div class="beta-header" id="betaHeader">
-      <div class="section-label">03 · Beta Programme</div>
+      <div class="section-label">02 · Beta Programme</div>
       <div class="section-title">Be among the first</div>
       <p>We're inviting a small group of clinicians in Melbourne to test and shape Apollonia before public launch. No cost. Your feedback builds the product.</p>
     </div>
@@ -399,7 +419,7 @@ footer {
       </div>
       <div class="form-consent">
         <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
+        <label for="consent">I agree to the <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('active')">Privacy Policy</a> and consent to Apollonia Medical Technology collecting my information to process this beta application.</label>
       </div>
       <div class="form-submit-row">
         <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
@@ -418,12 +438,68 @@ footer {
   <div class="footer-links">
     <a href="#product">Product</a>
     <a href="#beta">Beta Programme</a>
-    <a href="privacy.html" target="_blank">Privacy Policy</a>
+    <a href="#" onclick="event.preventDefault();document.getElementById('privacyModal').classList.add('active')">Privacy Policy</a>
   </div>
   <p class="footer-copy">&copy; 2026 Apollonia Medical Technology. All rights reserved.</p>
 </footer>
 
+<div class="privacy-modal-overlay" id="privacyModal">
+  <div class="privacy-modal">
+    <button class="privacy-modal-close" onclick="document.getElementById('privacyModal').classList.remove('active')">&times;</button>
+    <h2>Privacy Policy</h2>
+    <div class="privacy-meta">Last updated: March 2026</div>
+
+    <h3>Who We Are</h3>
+    <p>Apollonia Medical Technology ("Apollonia", "we", "us", "our") is an Australian company developing clinical camera and software products for dental professionals. This policy explains how we collect, use, and protect your personal information when you interact with this website and apply for our beta programme.</p>
+
+    <h3>Information We Collect</h3>
+    <p>When you submit a beta application, we collect:</p>
+    <ul>
+      <li>Name, email address, and phone number (if provided)</li>
+      <li>City of practice, professional role, and specialty (if applicable)</li>
+      <li>Information about your current loupes (if provided)</li>
+      <li>Free-text responses you choose to provide</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">We also automatically collect basic analytics data such as page views, referral source, and device type through standard web technologies. We do not use third-party advertising trackers.</p>
+
+    <h3>How We Use Your Information</h3>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Process and evaluate your beta application</li>
+      <li>Contact you regarding beta programme participation and scheduling</li>
+      <li>Send you product updates related to Apollonia (you may unsubscribe at any time)</li>
+      <li>Improve our products and services based on aggregated, anonymised feedback</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">We will never sell your personal information to third parties.</p>
+
+    <h3>Data Storage &amp; Security</h3>
+    <p>Your data is stored securely using industry-standard encryption. We use trusted third-party service providers for form handling and email communications, each bound by their own privacy obligations. Data is stored in Australia or in jurisdictions with comparable data protection standards.</p>
+
+    <h3>Your Rights</h3>
+    <p>Under Australian Privacy Principles (APPs), you have the right to:</p>
+    <ul>
+      <li>Access the personal information we hold about you</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of your data</li>
+      <li>Withdraw consent for marketing communications at any time</li>
+    </ul>
+    <p style="margin-top: 0.5rem;">To exercise any of these rights, contact us at the email address below.</p>
+
+    <h3>Cookies &amp; Tracking</h3>
+    <p>This website uses essential cookies for functionality and basic analytics cookies to understand how visitors use the site. No third-party advertising or remarketing cookies are used. You can disable cookies in your browser settings at any time.</p>
+
+    <h3>Changes to This Policy</h3>
+    <p>We may update this policy from time to time. Any changes will be posted on this page with an updated effective date. Continued use of this website after changes constitutes acceptance of the revised policy.</p>
+
+    <h3>Contact</h3>
+    <p>For questions about this privacy policy or your personal data, contact Apollonia Medical Technology at hello@apolloniamedical.com.</p>
+  </div>
+</div>
+
 <script>
+document.getElementById('privacyModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('active');
+});
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
