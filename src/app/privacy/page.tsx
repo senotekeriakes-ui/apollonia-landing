@@ -114,10 +114,10 @@ export default function PrivacyPage() {
             For questions about this privacy policy or your personal data,
             contact Apollonia Medical Technology at{" "}
             <a
-              href="mailto:hello@apolloniamedical.com"
+              href="mailto:senote@apollonia.com.au"
               className="underline hover:text-orange"
             >
-              hello@apolloniamedical.com
+              senote@apollonia.com.au
             </a>
             .
           </p>
