@@ -22,7 +22,7 @@ export default function Hero() {
         {/* 3D render */}
         <div className="relative flex items-center justify-center lg:justify-end">
           <Image
-            src="/assets/images/pixelated-camera.png"
+            src="/assets/images/pixelated-camera-transparent.png"
             alt="Apollonia camera 3D render"
             width={700}
             height={525}
