@@ -6,7 +6,7 @@ import LogoSvg from "./LogoSvg";
 
 const navLinks = [
   { label: "Features", href: "#features" },
-  { label: "Tree Of Apollonia", href: "#roadmap" },
+  { label: "Roadmap", href: "#roadmap" },
   { label: "Founder", href: "#founder" },
 ];
 
@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-ink">
       <div className="relative mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 lg:px-16">
         <Link href="/" className="shrink-0 text-grey">
-          <LogoSvg className="h-6 w-auto sm:h-7" />
+          <LogoSvg className="h-7 w-auto sm:h-8" />
         </Link>
 
         {/* Desktop links - center group */}
@@ -26,7 +26,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-heading text-base tracking-wide text-cream/80 transition-colors hover:text-cream"
+              className="font-heading text-xl tracking-wide text-cream/80 transition-colors hover:text-cream"
             >
               {link.label}
             </a>
@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Apply For Beta - far right */}
         <a
           href="#apply"
-          className="hidden font-heading text-lg tracking-wide text-grey transition-colors hover:text-cream md:block"
+          className="hidden font-heading text-xl tracking-wide text-grey transition-colors hover:text-cream md:block"
         >
           Apply For Beta
         </a>
