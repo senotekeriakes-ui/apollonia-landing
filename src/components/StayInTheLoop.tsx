@@ -50,22 +50,22 @@ export default function StayInTheLoop() {
                 You're on the list. We'll be in touch.
               </p>
             ) : (
-              <form onSubmit={handleSubmit} className="flex items-end gap-0">
-                <div className="bg-cream border-2 border-ink px-4 pt-2 pb-3">
-                  <label className="block font-heading text-[10px] tracking-[0.15em] text-ink/60">
+              <form onSubmit={handleSubmit} className="flex items-stretch">
+                <div className="bg-cream px-5 py-4 min-w-[280px]">
+                  <label className="block font-heading text-[11px] tracking-[0.15em] text-ink/50">
                     EMAIL ADDRESS
                   </label>
                   <input
                     type="email"
                     name="email"
                     required
-                    className="mt-1 w-48 bg-transparent font-body text-sm text-ink outline-none sm:w-56"
+                    className="mt-1 w-full bg-transparent font-body text-sm text-ink outline-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="border-2 border-ink bg-cream px-6 py-[18px] font-heading text-[11px] tracking-[0.15em] text-ink transition-colors hover:bg-ink hover:text-cream disabled:opacity-50"
+                  className="border-l border-ink/20 bg-cream px-8 font-heading text-[12px] tracking-[0.15em] text-ink transition-colors hover:bg-ink hover:text-cream disabled:opacity-50 whitespace-nowrap"
                 >
                   KEEP ME POSTED
                 </button>
