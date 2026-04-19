@@ -23,7 +23,7 @@ export default function Features() {
       <div className="mx-auto max-w-[1400px] px-6 py-20 lg:px-16 lg:py-28">
         <hr className="mb-16 border-cream/20" />
 
-        <h2 className="font-heading text-[clamp(2rem,5vw,3.5rem)] leading-[1] tracking-tight text-orange">
+        <h2 className="font-heading text-[clamp(2rem,5vw,70px)] leading-[55px] tracking-tight text-orange">
           WHAT MAKES APOLLONIA DIFFERENT
         </h2>
 

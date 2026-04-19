@@ -59,7 +59,7 @@ export default function BetaForm() {
     return (
       <section id="apply" className="bg-cream px-6 py-20 lg:px-16 lg:py-28">
         <div className="mx-auto max-w-[700px] text-center">
-          <h2 className="font-heading text-[clamp(2.5rem,5vw,3.5rem)] leading-[1] tracking-tight text-ink">
+          <h2 className="font-heading text-[clamp(2rem,5vw,40px)] leading-[35px] tracking-tight text-ink">
             APPLICATION RECEIVED
           </h2>
           <p className="mt-4 font-body text-lg text-ink/60">
@@ -73,7 +73,7 @@ export default function BetaForm() {
   return (
     <section id="apply" className="bg-cream px-6 py-20 lg:px-16 lg:py-28">
       <div className="mx-auto max-w-[700px]">
-        <h2 className="font-heading text-[clamp(2.5rem,5vw,3.5rem)] leading-[1] tracking-tight text-ink">
+        <h2 className="font-heading text-[clamp(2rem,5vw,40px)] leading-[35px] tracking-tight text-ink">
           BE AMONG THE FIRST
         </h2>
         <p className="mt-4 font-body text-base leading-relaxed text-ink/60">

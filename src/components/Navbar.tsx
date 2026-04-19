@@ -26,7 +26,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-body text-base tracking-wide text-cream/80 transition-colors hover:text-cream"
+              className="font-heading text-base tracking-wide text-cream/80 transition-colors hover:text-cream"
             >
               {link.label}
             </a>

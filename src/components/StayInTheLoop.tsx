@@ -34,7 +34,7 @@ export default function StayInTheLoop() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           {/* Text */}
           <div>
-            <h2 className="font-heading text-[clamp(2rem,5vw,3rem)] leading-[1] tracking-tight text-orange">
+            <h2 className="font-heading text-[clamp(2rem,5vw,70px)] leading-[55px] tracking-tight text-orange">
               STAY IN THE LOOP
             </h2>
             <p className="mt-4 max-w-md font-body text-base leading-relaxed text-cream/70">

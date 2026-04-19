@@ -9,7 +9,7 @@ export default function Founder() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Text */}
           <div>
-            <h2 className="font-heading text-[clamp(3rem,7vw,5.5rem)] leading-[0.95] tracking-tight text-orange">
+            <h2 className="font-heading text-[clamp(4rem,10vw,125px)] leading-[85px] tracking-tight text-orange">
               BUILT BY
               <br />
               A CLINICIAN
