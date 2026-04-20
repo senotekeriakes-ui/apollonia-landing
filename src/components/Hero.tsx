@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-ink">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center px-6 py-16 lg:grid-cols-2 lg:px-16 lg:py-24">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center px-6 py-8 lg:grid-cols-2 lg:px-16 lg:py-12">
         {/* Text */}
         <div>
           <h1 className="font-heading text-[clamp(4rem,10vw,125px)] leading-[85px] tracking-tight text-orange">
