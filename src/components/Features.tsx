@@ -31,7 +31,7 @@ export default function Features() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded bg-cream p-8 lg:p-10"
+              className="rounded bg-cream p-8 lg:p-10 transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <h3 className="font-heading text-base tracking-wide text-ink sm:text-lg">
                 {f.title}

@@ -16,8 +16,14 @@
   --font-body: var(--font-roboto);
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--color-cream);
+  background: var(--color-ink);
   color: var(--color-ink);
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  min-width: 100%;
+  overflow-x: hidden;
 }

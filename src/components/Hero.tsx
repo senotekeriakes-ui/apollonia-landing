@@ -26,7 +26,7 @@ export default function Hero() {
             alt="Apollonia camera 3D render"
             width={700}
             height={525}
-            className="w-full max-w-[550px] lg:max-w-[650px]"
+            className="w-full max-w-[600px] lg:max-w-[720px]"
             priority
           />
         </div>
