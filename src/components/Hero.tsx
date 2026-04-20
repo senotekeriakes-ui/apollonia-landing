@@ -20,7 +20,7 @@ export default function Hero() {
         </div>
 
         {/* 3D render */}
-        <div className="relative flex items-center justify-center lg:justify-end">
+        <div className="relative flex items-center justify-center">
           <Image
             src="/assets/images/pixelated-camera-transparent.png"
             alt="Apollonia camera 3D render"
