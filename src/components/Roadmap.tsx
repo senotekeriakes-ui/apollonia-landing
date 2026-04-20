@@ -33,7 +33,7 @@ export default function Roadmap() {
           {steps.map((s) => (
             <div
               key={s.title}
-              className="rounded bg-cream p-8 lg:p-10"
+              className="rounded bg-cream p-8 lg:p-10 transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="font-body text-[11px] font-medium uppercase tracking-[0.2em] text-ink/40">
                 {s.label}
