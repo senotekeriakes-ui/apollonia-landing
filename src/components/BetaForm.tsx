@@ -78,7 +78,8 @@ export default function BetaForm() {
         </h2>
         <p className="mt-4 font-body text-base leading-relaxed text-ink/60">
           We're placing units with a small group of clinicians ahead of launch.
-          No cost. Your feedback builds the product.
+          No cost. Your feedback builds the product. Currently only available to
+          clinicians based in Melbourne.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-10 space-y-6">
