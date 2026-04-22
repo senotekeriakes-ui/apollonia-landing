@@ -138,7 +138,7 @@ public/
 - **4 cards (2×2 grid):**
   1. **HIGH-DEFINITION VIDEO** — 4K resolution captures every detail of your work, from composite margins to complex procedures. Record full cases from start to finish with clinical-grade fidelity. Nothing is lost between chair and archive.
   2. **INTEGRATED LIGHTING** — A built-in LED delivers consistent, shadowless illumination directly onto the oral cavity. No more relying on overhead positioning. True-to-life colour accuracy and edge-to-edge visibility in every capture.
-  3. **HANDS-FREE CONTROL** — A wireless foot pedal lets you start, stop, and navigate without breaking sterility or losing focus. No reaching for buttons, no interruptions. Seamless capture that disappears into your clinical workflow.
+  3. **HANDS-FREE CONTROL** — Start and stop recording without breaking sterility or losing focus. No reaching for buttons, no interruptions. Seamless capture that disappears into your clinical workflow.
   4. **LIVE DISPLAY** — Stream a real-time feed to a chairside monitor so patients see exactly what you see. Share findings, build transparency, and turn patients into full partners in treatment decisions.
 
 ### This Is Just The Beginning (Roadmap)

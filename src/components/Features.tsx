@@ -9,7 +9,7 @@ const features = [
   },
   {
     title: "HANDS-FREE CONTROL",
-    body: "A wireless foot pedal lets you start, stop, and navigate without breaking sterility or losing focus. No reaching for buttons, no interruptions. Seamless capture that disappears into your clinical workflow.",
+    body: "Start and stop recording without breaking sterility or losing focus. No reaching for buttons, no interruptions. Seamless capture that disappears into your clinical workflow.",
   },
   {
     title: "LIVE DISPLAY",
